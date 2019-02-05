@@ -11,12 +11,21 @@
     "@babel/preset-react": "7.0.0",
     "babel-loader": "8.0.2",
     "css-loader": "1.0.0",
+    "eslint": "^5.13.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-jest-enzyme": "^7.0.1",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jest": "^22.2.2",
     "style-loader": "0.23.0",
     "webpack": "4.19.1",
     "webpack-cli": "3.1.1",
     "webpack-dev-server": "3.1.8"
   },
   "dependencies": {
+    "babel-jest": "^24.0.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.9.0",
+    "jest": "^24.0.0",
     "node-sass": "^4.11.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
@@ -29,6 +38,10 @@
   },
   "scripts": {
     "start": "webpack-dev-server --mode development",
-    "build": "webpack --mode development"
+    "build": "webpack --mode development",
+    "lint": "eslint --fix",
+    "test": "jest",
+    "test:watch": "jest --watch",    
+    "test:coverage": "jest --coverage --colors"
   }
 }

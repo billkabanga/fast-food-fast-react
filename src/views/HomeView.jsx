@@ -5,7 +5,7 @@ class HomeView extends Component {
   render() {
     return (
       <Home />
-    )
+    );
   }
 }
 
