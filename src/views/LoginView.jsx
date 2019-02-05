@@ -5,7 +5,7 @@ class LoginView extends Component {
   render() {
     return (
       <Login />
-    )
+    );
   }
 }
 
