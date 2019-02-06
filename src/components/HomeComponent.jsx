@@ -8,7 +8,7 @@ const Home = () => {
         <div className="nav-wrapper">
           <a href="#" className="brand-logo">Fast-Food-Fast</a>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
-            <li><a href="#">SignUp</a></li>
+            <li><a href="/signup">SignUp</a></li>
             <li><a href="#">Login</a></li>
             <li><a href="#">About</a></li>
           </ul>
