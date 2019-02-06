@@ -9,8 +9,33 @@ module.exports = {
 		ecmaVersion: 6,
 		sourceType: 'module',
 		ecmaFeatures: {
-			jsx: true
+			"arrowFunctions": true,
+			"binaryLiterals": true,
+			"blockBindings": true,
+			"classes": true,
+			"defaultParams": true,
+			"destructuring": true,
+			"forOf": true,
+			"generators": true,
+			"modules": true,
+			"objectLiteralComputedProperties": true,
+			"objectLiteralDuplicateProperties": true,
+			"objectLiteralShorthandMethods": true,
+			"objectLiteralShorthandProperties": true,
+			"octalLiterals": true,
+			"regexUFlag": true,
+			"regexYFlag": true,
+			"spread": true,
+			"superInFunctions": true,
+			"templateStrings": true,
+			"unicodeCodePointEscapes": true,
+			"globalReturn": true,
+			"jsx": true,
+			"experimentalObjectRestSpread": true
 		}
 	},
-  extends: ['airbnb-base', 'plugin:jest/recommended', 'jest-enzyme'],
+	extends: ['airbnb-base', 'plugin:jest/recommended', 'jest-enzyme', 'plugin:react/recommended'],
+	rules: {
+		"import/no-unresolved": "off"
+	}
 };
