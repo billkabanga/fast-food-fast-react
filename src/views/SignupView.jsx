@@ -25,7 +25,7 @@ class SignupView extends Component {
     if (successMessage && message === undefined) {
       const error = successMessage.message;
       notify(error, 'success');
-      history.push('/');
+      history.push('/login');
       this.setState({
         success: successMessage,
       });
