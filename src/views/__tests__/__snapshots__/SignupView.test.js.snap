@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`signup view renders conatainer with chikd component successfully 1`] = `ShallowWrapper {}`;
+exports[`signup view renders container with chikd component successfully 1`] = `ShallowWrapper {}`;

@@ -1,0 +1,31 @@
+.dashboard {
+  background-color: white;
+}
+
+.menu-table {
+  width: 80%;
+  margin-left: 10%;
+}
+
+.click-add {
+  margin: {
+    left: 85%;
+    bottom: 10px;
+    top: 10px;
+  }
+}
+
+.table-header {
+  text-align: center;
+  padding: {
+    top: 15px;
+    bottom: 15px;
+  }
+  border-bottom: 2px solid gray;
+}
+
+.add-form {
+  width: 30%;
+  text-align: center;
+  padding-left: 20px;
+}

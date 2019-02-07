@@ -4,7 +4,7 @@ import 'msg-notify/dist/notify.css';
 import notify from 'msg-notify';
 import PropTypes from 'prop-types';
 import SignupPage from '../components/SignupComponent';
-import postDataThunkPublic from '../redux/thunks';
+import { postDataThunkPublic } from '../redux/thunks';
 import userSignUp from '../redux/actions/AuthActions';
 
 export class SignupView extends Component {

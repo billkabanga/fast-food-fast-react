@@ -27,7 +27,7 @@ describe('signup view', () => {
     store.dispatch = jest.fn();
   });
 
-  it('renders conatainer with chikd component successfully', () => {
+  it('renders container with chikd component successfully', () => {
     wrapper = shallow(<SignupView {...props} />);
     expect(wrapper).toMatchSnapshot();
   });
@@ -122,7 +122,7 @@ describe('signup view', () => {
     wrapper = mount(<SignupView {...props} history={historyMock}/>);
     wrapper.setProps({
       postDataThunkPublic: jest.fn(),
-      error: "username can't be empty",
+      error: { message: "username can't be empty" },
       message: null,
     });
   });

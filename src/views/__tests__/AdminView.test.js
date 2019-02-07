@@ -3,16 +3,16 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import LoginPage, { LoginView } from '../LoginView';
+import AdminPage, { AdminView } from '../AdminView';
 
 const mockStore = configureStore([thunk]);
 
-describe('login view', () => {
+describe('admin view', () => {
   let wrapper;
   let store;
 
   let props = {
-    postDataThunkPublic: jest.fn(),
+    postDataThunkPrivate: jest.fn(),
     error: null,
     successMessage: null,
   };
@@ -27,91 +27,82 @@ describe('login view', () => {
     store.dispatch = jest.fn();
   });
 
-  it('renders container with chikd component successfully', () => {
-    wrapper = shallow(<LoginView {...props} />);
+  it('renders conatainer with chikd component successfully', () => {
+    wrapper = shallow(<AdminView {...props} />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('renders connected component successfully', () => {
     const state = {
-      authReducer: {
+      menuReducer: {
         error: {
           message: '',
         },
         successMessage: {
-          message: 'logged in successfully',
+          message: 'Food option added successfuly',
         },
       },
     };
     store = mockStore(state);
     props = {
-      postDataThunkPublic: jest.fn(),
+      postDataThunkPrivate: jest.fn(),
       error: {
         message: '',
       },
       successMessage: {
-        message: 'logged in successfully',
+        message: 'Food option added successfuly',
       },
     };
     wrapper = mount(<Provider store={store}>
-      <LoginPage {...props}/>
+      <AdminPage {...props}/>
     </Provider>);
   });
 
   it('should handle change event on inputs', () => {
     const onChange = jest.fn();
-    wrapper = mount(<LoginView {...props} onChange={onChange}/>);
-    const event = 'kabanga';
-    wrapper.find('.username').simulate('change', event);
-    expect(wrapper.find('.username')).toBeDefined();
-  });
-
-  it('should handle change event on radio inputs', () => {
-    const onRadioChange = jest.fn();
-    wrapper = mount(<LoginView {...props} onRadioChange={onRadioChange}/>);
-    wrapper.find('.radio-button').simulate('change');
-    expect(wrapper.find('.radio-button')).toBeDefined();
+    wrapper = mount(<AdminView {...props} onChange={onChange}/>);
+    const event = 'chips';
+    wrapper.find('.input-item').first().simulate('change', event);
+    expect(wrapper.find('.input-item').first()).toBeDefined();
   });
 
   it('should handle click event on button', () => {
-    const onSubmit = jest.fn();
-    wrapper = mount(<LoginView {...props} onSubmit={onSubmit}/>);
+    const onClick = jest.fn();
+    wrapper = mount(<AdminView {...props} onClick={onClick}/>);
     wrapper.find('.sign-up').simulate('click');
     expect(wrapper.find('.sign-up')).toBeDefined();
   });
 
   it('should call component will receive props with success', () => {
-    const historyMock = { push: jest.fn() };
     const state = {
-      username: '',
-      password: '',
-      role: '',
+      item: '',
+      price: '',
+      success: 'Food option added successfuly',
       error: '',
-      success: { message: 'logged in successfully' },
     };
-    wrapper = mount(<LoginView {...props} history={historyMock}/>);
+    wrapper = mount(<AdminView {...props}/>);
     wrapper.setProps({
-      postDataThunkPublic: jest.fn(),
+      postDataThunkPrivate: jest.fn(),
       error: '',
-      message: 'logged in successfully',
+      success: { message: 'Food option added successfuly' },
     }, () => {
+      console.log(wrapper.state());
       expect(wrapper.state()).toEqual(state);
     });
-    expect(historyMock.push.mock.calls[0]).toEqual(['/']);
   });
 
   it('should call component will receive props with error message', () => {
     const historyMock = { push: jest.fn() };
     props = {
-      postDataThunkPublic: jest.fn(),
+      postDataThunkPrivate: jest.fn(),
       successMessage: null,
-      error: "username can't be empty",
+      error: { price: 'Please provide price, provide food item as well' },
     };
 
-    wrapper = mount(<LoginView {...props} history={historyMock}/>);
+    wrapper = mount(<AdminView {...props} history={historyMock}/>);
     wrapper.setProps({
       postDataThunkPublic: jest.fn(),
-      error: { message: "username can't be empty" },
+      error: { message: { price: 'Please provide price, provide food item as well' } } ,
       message: null,
     });
   });

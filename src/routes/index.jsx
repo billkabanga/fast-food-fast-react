@@ -5,6 +5,7 @@ import configureStore from '../redux/store';
 import HomeView from '../views/HomeView';
 import LoginView from '../views/LoginView';
 import SignupView from '../views/SignupView';
+import AdminView from '../views/AdminView';
 
 
 export const store = configureStore();
@@ -17,6 +18,7 @@ const Routes = () => {
           <Route path="/" component={HomeView} exact/>
           <Route path="/login" component={LoginView} />
           <Route path="/signup" component={SignupView} />
+          <Route path="/admin" component={AdminView} />
         </Switch>
       </BrowserRouter>
     </Provider>

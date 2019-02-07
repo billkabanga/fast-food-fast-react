@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import 'msg-notify/dist/notify.css';
 import notify from 'msg-notify';
 import PropTypes from 'prop-types';
-import postDataThunkPublic from '../redux/thunks';
+import { postDataThunkPublic } from '../redux/thunks';
 import userSignUp from '../redux/actions/AuthActions';
 import LoginPage from '../components/LoginComponent';
 
@@ -19,12 +19,14 @@ export class LoginView extends Component {
   componentWillReceiveProps(nextProps) {
     const { error: { message }, successMessage } = nextProps;
     const { history } = this.props;
+    const { role } = this.state;
 
     if (successMessage && message === undefined) {
       localStorage.setItem('token', successMessage.access_token);
       const error = successMessage.message;
       notify(error, 'success');
-      history.push('/');
+      // eslint-disable-next-line no-unused-expressions
+      (role === 'admin') ? history.push('/admin') : history.push('/');
       this.setState({
         success: successMessage,
       });
