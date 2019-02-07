@@ -6,7 +6,7 @@ const UsernameField = ({ onChange }) => {
     <div className="row">
       <div className="input-field col s12">
         <i className="material-icons prefix">account_circle</i>
-        <input id="icon_prefix" type="text" className="validate" name="username" onChange={onChange}/>
+        <input id="icon_prefix" type="text" className="validate username" name="username" onChange={onChange}/>
         <label htmlFor="icon_prefix">Username</label>
       </div>
     </div>
