@@ -5,8 +5,8 @@ import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize.min';
 import Routes from './routes';
 
-class App extends Component{
-  render(){
+class App extends Component {
+  render() {
     return(
       <div className="App">
         <Routes />

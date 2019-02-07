@@ -1,7 +1,7 @@
 import axios from 'axios';
 import errorOccured from '../actions/errorAction';
 
-const axiosInstance = axios.create({
+export const axiosInstance = axios.create({
   baseURL: 'https://bill-fast-food.herokuapp.com/api/v1/',
 });
 

@@ -6,7 +6,7 @@ const RadioButtons = ({ onChange }) => {
     <div>
       <p>
         <label className="radio-input">
-          <input name="group1" type="radio" value="admin" onChange={onChange}/>
+          <input name="group1" type="radio" className="radio-button" value="admin" onChange={onChange}/>
           <span>Admin</span>
         </label>
         <label className="radio-input">

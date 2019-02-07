@@ -7,7 +7,7 @@ import SignupPage from '../components/SignupComponent';
 import postDataThunkPublic from '../redux/thunks';
 import userSignUp from '../redux/actions/AuthActions';
 
-class SignupView extends Component {
+export class SignupView extends Component {
   state = {
     username: '',
     email: '',
@@ -23,8 +23,8 @@ class SignupView extends Component {
     const { history } = this.props;
 
     if (successMessage && message === undefined) {
-      const error = successMessage.message;
-      notify(error, 'success');
+      const success = successMessage.message;
+      notify(success, 'success');
       history.push('/login');
       this.setState({
         success: successMessage,
@@ -83,9 +83,8 @@ const actionCreator = {
 
 SignupView.propTypes = {
   message: PropTypes.string,
-  error: PropTypes.object,
   successMessage: PropTypes.object,
-  history: PropTypes.func,
+  history: PropTypes.object,
   postDataThunkPublic: PropTypes.func,
 };
 
