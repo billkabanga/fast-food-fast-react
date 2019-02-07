@@ -7,7 +7,7 @@ import postDataThunkPublic from '../redux/thunks';
 import userSignUp from '../redux/actions/AuthActions';
 import LoginPage from '../components/LoginComponent';
 
-class LoginView extends Component {
+export class LoginView extends Component {
   state = {
     username: '',
     password: '',
@@ -18,13 +18,13 @@ class LoginView extends Component {
 
   componentWillReceiveProps(nextProps) {
     const { error: { message }, successMessage } = nextProps;
-    //const { history } = this.props;
+    const { history } = this.props;
 
     if (successMessage && message === undefined) {
       localStorage.setItem('token', successMessage.access_token);
       const error = successMessage.message;
       notify(error, 'success');
-      //history.push('/');
+      history.push('/');
       this.setState({
         success: successMessage,
       });
@@ -82,9 +82,8 @@ const actionCreator = {
 
 LoginView.propTypes = {
   message: PropTypes.string,
-  error: PropTypes.object,
   successMessage: PropTypes.object,
-  history: PropTypes.func,
+  history: PropTypes.object,
   postDataThunkPublic: PropTypes.func,
 };
 
