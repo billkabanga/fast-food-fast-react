@@ -24,7 +24,7 @@ class ClientComponent extends Component {
         <NavBar item1="Home" item2="Logout" item3="About" url1="/" url2="/login" url3="#" />
         <div className="container dashboard">
           <div className="z-depth-3">
-            <h4 className="container table-header">Fast-Food-Fast Menu</h4>
+            <h4 className="container table-header">Menu (<small>click button to place order</small>)</h4>
             <table className="striped centered menu-table">
               <thead>
                 <tr>
