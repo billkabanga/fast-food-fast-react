@@ -21,7 +21,7 @@ const SignupPage = ({ onSubmit, onRadioChange, onChange }) => {
               <PasswordField onChange={onChange}/>
               <RadioButtons onChange={onRadioChange}/>
               <SignupButton name="signup" onClick={onSubmit}/>
-              <p><a href="/login" className="grey-text darken-2-text">Already have an account</a></p>
+              <p><a href="/" className="grey-text darken-2-text">Already have an account</a></p>
             </form>
           </div>
         </div>
