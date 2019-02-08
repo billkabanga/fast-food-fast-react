@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import 'msg-notify/dist/notify.css';
 import notify from 'msg-notify';
+import PropTypes from 'prop-types';
 import AdminComponent from '../components/AdminComponent';
-import { postDataThunkPrivate } from '../redux/thunks';
-import addMenuItem from '../redux/actions/MenuActions';
+import { postDataThunkPrivate, getDataThunkPublic } from '../redux/thunks';
+import { addMenuItem, getMenu } from '../redux/actions/MenuActions';
 
 
 export class AdminView extends Component {
@@ -13,6 +14,11 @@ export class AdminView extends Component {
     price: '',
     success: '',
     error: '',
+  }
+
+  componentDidMount() {
+    const { getDataThunkPublic } = this.props;
+    getDataThunkPublic('menu', getMenu);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -25,6 +31,7 @@ export class AdminView extends Component {
       this.setState({
         success: successMessage,
       });
+      window.location.reload();
     } else if (message) {
       const errorShow = message.price || message;
       notify(errorShow, 'error');
@@ -49,8 +56,9 @@ export class AdminView extends Component {
   }
 
   render() {
+    const { menu } = this.props;
     return (
-      <AdminComponent onChange={this.handleChange} onClick={this.handleClick}/>
+      <AdminComponent onChange={this.handleChange} onClick={this.handleClick} menu={menu}/>
     );
   }
 }
@@ -59,11 +67,18 @@ const mapStateToProps = (state) => {
   return {
     error: state.menuReducer.error,
     success: state.menuReducer.message,
+    menu: state.menuReducer.menu,
   };
 };
 
 const actionCreators = {
   postDataThunkPrivate,
+  getDataThunkPublic,
+};
+
+AdminView.propTypes = {
+  getDataThunkPrivate: PropTypes.func,
+  postDataThunkPrivate: PropTypes.func,
 };
 
 export default connect(mapStateToProps, actionCreators)(AdminView);

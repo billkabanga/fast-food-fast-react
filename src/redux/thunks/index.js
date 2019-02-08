@@ -18,6 +18,14 @@ const postDataThunkPublic = (endpoint, data, actionCreator, method) => (dispatch
   });
 };
 
+const getDataThunkPublic = (endpoint, actionCreator) => (dispatch) => {
+  return axiosInstance.get(endpoint).then((response) => {
+    dispatch(actionCreator(response.data));
+  }).catch((err) => {
+    dispatch(errorOccured(err));
+  });
+};
+
 const postDataThunkPrivate = (endpoint, data, actionCreator, method) => (dispatch) => {
   const token = localStorage.getItem('token');
 
@@ -29,4 +37,6 @@ const postDataThunkPrivate = (endpoint, data, actionCreator, method) => (dispatc
   });
 };
 
-export { postDataThunkPublic, postDataThunkPrivate, axiosInstance };
+export {
+  postDataThunkPublic, postDataThunkPrivate, axiosInstance, getDataThunkPublic,
+};
