@@ -7,7 +7,7 @@ const initialState = {
   error: null,
 };
 
-describe('auth reducer', () => {
+describe('menu reducer', () => {
   it('should return initial state', () => {
     expect(menuReducer(undefined, {})).toEqual(initialState);
   });

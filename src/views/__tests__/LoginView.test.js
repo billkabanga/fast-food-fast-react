@@ -25,6 +25,7 @@ describe('login view', () => {
   beforeEach(() => {
     store = mockStore(initialState);
     store.dispatch = jest.fn();
+    window.location.reload = jest.fn();
   });
 
   it('renders container with chikd component successfully', () => {
@@ -97,7 +98,7 @@ describe('login view', () => {
     }, () => {
       expect(wrapper.state()).toEqual(state);
     });
-    expect(historyMock.push.mock.calls[0]).toEqual(['/']);
+    expect(historyMock.push.mock.calls[0]).toEqual(['/client']);
   });
 
   it('should call component will receive props with error message', () => {

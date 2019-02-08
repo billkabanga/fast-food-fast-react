@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`login view renders container with child component successfully 1`] = `ShallowWrapper {}`;

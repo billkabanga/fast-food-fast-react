@@ -26,7 +26,8 @@ export class LoginView extends Component {
       const error = successMessage.message;
       notify(error, 'success');
       // eslint-disable-next-line no-unused-expressions
-      (role === 'admin') ? history.push('/admin') : history.push('/');
+      (role === 'admin') ? history.push('/admin') : history.push('/client');
+      window.location.reload();
       this.setState({
         success: successMessage,
       });
