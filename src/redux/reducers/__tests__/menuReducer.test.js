@@ -1,5 +1,5 @@
 import menuReducer from '../MenuReducer';
-import addMenuItem from '../../actions/MenuActions';
+import { addMenuItem, getMenu } from '../../actions/MenuActions';
 import errorOccured from '../../actions/errorAction';
 
 const initialState = {
@@ -19,6 +19,17 @@ describe('auth reducer', () => {
     };
     expect(
       menuReducer(initialState, addMenuItem('Food option added successfuly')),
+    ).toEqual(expected);
+  });
+
+  it('should return menu', () => {
+    const expected = {
+      error: '',
+      menu: { item: 'rice', price: '2000' },
+      message: '',
+    };
+    expect(
+      menuReducer(initialState, getMenu({ item: 'rice', price: '2000' })),
     ).toEqual(expected);
   });
 

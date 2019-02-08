@@ -6,6 +6,7 @@ import HomeView from '../views/HomeView';
 import LoginView from '../views/LoginView';
 import SignupView from '../views/SignupView';
 import AdminView from '../views/AdminView';
+import ClientView from '../views/ClientView';
 
 
 export const store = configureStore();
@@ -19,6 +20,7 @@ const Routes = () => {
           <Route path="/login" component={LoginView} />
           <Route path="/signup" component={SignupView} />
           <Route path="/admin" component={AdminView} />
+          <Route path="/client" component={ClientView} />
         </Switch>
       </BrowserRouter>
     </Provider>

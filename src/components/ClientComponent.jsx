@@ -6,7 +6,7 @@ import InputField from './utils/InputField';
 import SignupButton from './utils/SignupButton';
 
 
-class AdminComponent extends Component {
+class ClientComponent extends Component {
   // eslint-disable-next-line class-methods-use-this
   componentDidMount() {
     document.addEventListener('DOMContentLoaded', () => {
@@ -42,11 +42,11 @@ class AdminComponent extends Component {
             <a className="btn-floating btn-large waves-effect waves-light btn modal-trigger click-add" href="#modal1"><i className="material-icons">add</i></a>
             <div id="modal1" className="modal add-form s12 m4 l3">
               <div className="modal-content">
-                <h4>New food item</h4>
+                <h4>Place your order</h4>
                 <form>
                   <InputField item="item" onChange={onChange}/>
-                  <InputField item="price" onChange={onChange}/>
-                  <SignupButton name="Add" onClick={onClick}/>
+                  <InputField item="quantity" onChange={onChange}/>
+                  <SignupButton name="Order" onClick={onClick}/>
                 </form>
               </div>
             </div>
@@ -57,9 +57,9 @@ class AdminComponent extends Component {
   }
 }
 
-AdminComponent.propTypes = {
+ClientComponent.propTypes = {
   onChange: PropTypes.func,
   onClick: PropTypes.func,
 };
 
-export default AdminComponent;
+export default ClientComponent;

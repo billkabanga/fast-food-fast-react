@@ -13,8 +13,19 @@ describe('admin view', () => {
 
   let props = {
     postDataThunkPrivate: jest.fn(),
+    getDataThunkPublic: jest.fn(),
     error: null,
     successMessage: null,
+    menu: [
+      {
+        item: 'chips',
+        price: '2000',
+      },
+      {
+        item: 'chbnn',
+        price: '2000',
+      },
+    ],
   };
 
   const initialState = {
@@ -25,6 +36,7 @@ describe('admin view', () => {
   beforeEach(() => {
     store = mockStore(initialState);
     store.dispatch = jest.fn();
+    window.location.reload = jest.fn();
   });
 
   it('renders conatainer with chikd component successfully', () => {
@@ -46,12 +58,23 @@ describe('admin view', () => {
     store = mockStore(state);
     props = {
       postDataThunkPrivate: jest.fn(),
+      getDataThunkPublic: jest.fn(),
       error: {
         message: '',
       },
       successMessage: {
         message: 'Food option added successfuly',
       },
+      menu: [
+        {
+          item: 'chips',
+          price: '2000',
+        },
+        {
+          item: 'chbnn',
+          price: '2000',
+        },
+      ],
     };
     wrapper = mount(<Provider store={store}>
       <AdminPage {...props}/>
@@ -83,10 +106,10 @@ describe('admin view', () => {
     wrapper = mount(<AdminView {...props}/>);
     wrapper.setProps({
       postDataThunkPrivate: jest.fn(),
+      getDataThunkPublic: jest.fn(),
       error: '',
       success: { message: 'Food option added successfuly' },
     }, () => {
-      console.log(wrapper.state());
       expect(wrapper.state()).toEqual(state);
     });
   });
@@ -95,13 +118,25 @@ describe('admin view', () => {
     const historyMock = { push: jest.fn() };
     props = {
       postDataThunkPrivate: jest.fn(),
+      getDataThunkPublic: jest.fn(),
       successMessage: null,
       error: { price: 'Please provide price, provide food item as well' },
+      menu: [
+        {
+          item: 'chips',
+          price: '2000',
+        },
+        {
+          item: 'chbnn',
+          price: '2000',
+        },
+      ],
     };
 
     wrapper = mount(<AdminView {...props} history={historyMock}/>);
     wrapper.setProps({
       postDataThunkPublic: jest.fn(),
+      getDataThunkPublic: jest.fn(),
       error: { message: { price: 'Please provide price, provide food item as well' } } ,
       message: null,
     });
